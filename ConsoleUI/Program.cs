@@ -10,6 +10,8 @@ namespace ConsoleUI
         {
             ProductTest();
 
+
+
             CategoryTest();
 
         }
@@ -30,7 +32,7 @@ namespace ConsoleUI
             ProductManager productManager = new ProductManager(new EfProductDal());
 
 
-            foreach (var product in productManager.GetProductDetails().)
+            foreach (var product in productManager.GetProductDetails().Data)
             {
                 
                 Console.WriteLine(product.ProductName+"  "+product.CategoryName);

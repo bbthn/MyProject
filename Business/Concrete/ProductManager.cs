@@ -46,7 +46,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll(Expression<Func<Product, bool>> filter = null)
         {
-            if (DateTime.Now.Hour==22)
+            if (DateTime.Now.Hour==5)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
 
