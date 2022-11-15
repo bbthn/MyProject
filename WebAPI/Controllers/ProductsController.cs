@@ -22,14 +22,58 @@ namespace WebAPI.Controllers
             _productService = productService;
         }
 
-        [HttpGet]
-        public List<Product> Get()
+        [HttpGet("getall")]
+        public IActionResult GetAll()
         {
-
+            //swagger
+            //dependenc injection
             var result = _productService.GetAll();
-
-            return result.Data;
+            if (result.Success) 
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         
         }
+
+        [HttpGet("getbyname")]
+        public IActionResult GetById(string productName)
+        {
+            var result = _productService.GetByName(productName);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+
+
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int productId)
+        {
+            var result = _productService.GetById(productId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+        [HttpPost("add")]//isim vererek aliase islemi yapildi
+        public IActionResult Add(Product product)
+        {
+            var result = _productService.Add(product);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+
+
     }
+
+
 }

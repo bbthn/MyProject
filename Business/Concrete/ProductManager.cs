@@ -46,12 +46,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll(Expression<Func<Product, bool>> filter = null)
         {
-            if (DateTime.Now.Hour==5)
+            if (DateTime.Now.Hour==1)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
 
             }
-            return new SuccessDataResult<List<Product>>(_productDal.GetAll(filter), Messages.ProductAdded);
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(filter), Messages.Success);
         }
 
         public IDataResult<List<Product>> GetByCategoryId(int id)
@@ -62,6 +62,11 @@ namespace Business.Concrete
         public IDataResult<Product> GetById(int productId)
         {
             return new DataResult<Product>(_productDal.Get(p => p.ProductId == productId),true,"Urun bulundu!");
+        }
+
+        public IDataResult<List<Product>> GetByName(string productName)
+        {
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p=>p.ProductName == productName), Messages.ProductFounded);
         }
 
         public IDataResult<List<Product>> GetByUnitPrice(decimal min, decimal max)

@@ -27,6 +27,10 @@ namespace WebAPI
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        //Ninject, Autofac, LightInject, DryInject  ->> IoC Container We will use Autofac with built-in IoC services
+        //AOP
+
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();

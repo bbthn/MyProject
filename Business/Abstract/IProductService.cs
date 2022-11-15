@@ -12,6 +12,8 @@ namespace Business.Abstract
     {
         IDataResult<List<Product>> GetAll(Expression<Func<Product, bool>> filter = null);
         IDataResult<Product> Get(Expression<Func<Product, bool>> filter);
+        IDataResult<List<Product>> GetByName(string productName);
+
         IDataResult<Product> GetById(int productId);
         IResult Delete(Product Tentity); 
         IResult Add(Product Tentity);
